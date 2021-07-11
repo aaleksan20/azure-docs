@@ -59,46 +59,44 @@ To configure and test Azure AD SSO with JFrog Artifactory, perform the following
     1. **[Create JFrog Artifactory test user](#create-jfrog-artifactory-test-user)** - to have a counterpart of B.Simon in JFrog Artifactory that is linked to the Azure AD representation of user.
 1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
 
-## Configure Azure AD SSO
+### Configure Azure AD SSO
 
 Follow these steps to enable Azure AD SSO in the Azure portal.
 
-1. In the Azure portal, on the **JFrog Artifactory** application integration page, find the **Manage** section and select **Single sign-on**.
+1. In the [Azure portal](https://portal.azure.com/), on the **JFrog Artifactory** application integration page, find the **Manage** section and select **Single sign-on**.
 1. On the **Select a Single sign-on method** page, select **SAML**.
-1. On the **Set up Single Sign-On with SAML** page, click the pencil icon for **Basic SAML Configuration** to edit the settings.
+1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
 
    ![Edit Basic SAML Configuration](common/edit-urls.png)
 
 1. On the **Basic SAML Configuration** section, if you wish to configure the application in **IDP** initiated mode, enter the values for the following fields:
 
-    a. In the **Identifier** text box, type a URL using the following pattern:
-    `<servername>.jfrog.io`
+    a. In the **Identifier** text box, enter a URL that reflects the Artifactory URL.
 
     b. In the **Reply URL** text box, type a URL using the following pattern:
-    
-    - For Artifactory 6.x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
-    - For Artifactory 7.x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    - For Artifactory Self-hosted: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - For Artifactory SaaS: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. Click **Set additional URLs** and perform the following step if you wish to configure the application in **SP** initiated mode:
 
     In the **Sign-on URL** text box, type a URL using the following pattern:
-    - For Artifactory 6.x: `https://<servername>.jfrog.io/<servername>/webapp/`
-    - For Artifactory 7.x: `https://<servername>.jfrog.io/ui/login`
+    - For Artifactory Self-hosted: `https://<servername>.jfrog.io/<servername>/webapp/`
+    - For Artifactory SaaS: `https://<servername>.jfrog.io/ui/login`
 
 	> [!NOTE]
 	> These values are not real. Update these values with the actual Identifier, Reply URL and Sign-on URL. Contact [JFrog Artifactory Client support team](https://support.jfrog.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. JFrog Artifactory application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows the list of default attributes. Click the **Edit** icon to open the  User Attributes dialog.
+1. JFrog Artifactory application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows the list of default attributes. Click the **Edit** icon to open the  User Attributes & Claims dialog.
 
 	![Screenshot shows User Attributes with the edit control called out.](common/edit-attribute.png)
 
-1. In addition to the above, JFrog Artifactory expects a number of additional attributes to be passed back in the SAML response. In the **User Attributes & Claims** section on the **Group Claims (Preview)** dialog, perform the following steps:
+1. In addition to the above, JFrog Artifactory expects a number of additional attributes to be passed back in the SAML response. In the **User Attributes & Claims** section click **"Add a group claim"** and perform the following steps:
 
-	a. Click the **pen** next to **Groups returned in claim**.
+	a. Click the **Open** next to **Groups returned in claim**.
 
-	![Screenshot shows User Attributes & Claims with the Edit icon selected.](./media/jfrog-artifactory-tutorial/configuration-4.png)
+	![Screenshot shows User Attributes & Claims with the Edit icon selected.](./media/jfrog-artifactory-tutorial/config04.png)
 
-	![Screenshot shows the Group Claims section with All groups selected.](./media/jfrog-artifactory-tutorial/configuration-5.png)
+	![Screenshot shows the Group Claims section with All groups selected.](./media/jfrog-artifactory-tutorial/config05.png)
 
 	b. Select **All Groups** from the radio list.
 
@@ -106,14 +104,15 @@ Follow these steps to enable Azure AD SSO in the Azure portal.
 
 4. In the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section,  locate the **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
 
-	![The Certificate download link](./media/jfrog-artifactory-tutorial/certificate-base.png)
+	![The Certificate download link](common/certificatebase.png)
 
 6. Configure the Artifactory (SAML Service Provider Name) with the 'Identifier' field (see step 4). In the **Set up JFrog Artifactory** section, copy the appropriate URL(s) based on your requirement.
 
-   - For Artifactory 6.x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
-   - For Artifactory 7.x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+- For Artifactory Self-hosted: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+- For Artifactory SaaS: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 	![Copy configuration URLs](common/copy-configuration-urls.png)
+
 
 ### Create an Azure AD test user
 
